@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZGJ9SMQHWN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZGJ9SMQHWN');
+</script>
+
+  <script>
+    const IOS_LINK = "https://apps.apple.com/in/app/streefi/id6747432924";
+    const ANDROID_LINK = "https://play.google.com/store/apps/details?id=com.streefi.customer&pcampaignid=web_share";
+    const DESKTOP_LINK = "https://streefi.in";
+
+    const ua = navigator.userAgent.toLowerCase();
+    let platform = "Desktop";
+    let target = DESKTOP_LINK;
+    if (/iphone|ipad|ipod/.test(ua)) { platform = "iOS"; target = IOS_LINK; }
+    else if (/android/.test(ua)) { platform = "Android"; target = ANDROID_LINK; }
+
+    // Log event to GA
+    gtag('event', 'qr_scan', {
+      event_category: 'QR',
+      event_label: platform
+    });
+
+    // Redirect after short delay (ensures GA logs the event)
+    setTimeout(() => { window.location.replace(target); }, 300);
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
